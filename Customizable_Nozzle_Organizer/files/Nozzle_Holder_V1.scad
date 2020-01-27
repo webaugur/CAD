@@ -1,7 +1,7 @@
 include <write/Write.scad>
-//include <VectorMath.scad>
+
 //Font
-font="write/Letters.dxf"; //["write/BlackRose.dxf":BlackRose,"write/braille.dxf":Braille,"write/knewave.dxf":knewave,"write/Letters.dxf":Default,"write/orbitron.dxf":Orbitron]
+font="write/Letters.dxf";
 //Text size
 t_size=8;
 //Text Vertical Offset from hole
@@ -28,8 +28,6 @@ n=[1,1,2,2,3,1];
 o=["",".3",".5",".8",".4",""];
 //Label block sizes in array
 s=[0,20,20,20,20,0];
-
-//offset=0;
 
 if(emboss==1) textemb();
 else texteng();
