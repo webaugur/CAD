@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# YOUR SERVER SETTINGS
+APIKEY=XXXXXXXXXXXXXXXXXXXXXXXX # Octoprint API Key
+SERVER=127.0.0.1 # Octoprint Hostname/IP
+FOLDER=Simplify3D # Octoprint Upload Folder
+
+# UNIX stuff
+FILENAME="${1}"
+DIALOG=/usr/bin/zenity
+#DIALOG=/usr/bin/dialog # Terminal
+#DIALOG=/usr/bin/gdialog # X Window
+
+# Where in the world is jq?
+# Some adjustments may be required for Linux/UNIX
+if [ `uname` = "Darwin" ]; then
+	# macOS Ports puts it here
+	JQ=/opt/local/bin/jq
+else
+	# Other UNIX systems probably put it here
+	JQ=/usr/bin/jq
+fi 
+
+# Upload to Octoprint
+JSON=`/usr/bin/curl --silent -k -H "X-Api-Key: ${APIKEY}" -F "select=false" -F "print=false" -F "file=@${FILENAME}" "http://${SERVER}/api/files/local?path=${FOLDER}"`
+
+# Convert JSON to BASH variables
+OCTO_FILENAME=`echo $JSON | ${JQ} '.files.local.name'`
+OCTO_ORIGIN=`echo $JSON | ${JQ} '.files.local.origin'`
+OCTO_DOWNLOAD=`echo $JSON | ${JQ} '.files.local.refs.download'`
+OCTO_STATUS=`echo $JSON | ${JQ} '.done'`
+
+# Display a message when the file upload is complete or failed
+if [ "$OCTO_STATUS" = "true" ] ; then
+	OCTO_MSG_STATUS="Successfully Uploaded ${OCTO_FILENAME} to ${SERVER}!"
+else
+	OCTO_MSG_STATUS="Failed Uploading ${OCTO_FILENAME}"
+fi
+
+# macOS display notification script
+if [ -x /usr/bin/osascript ]; then
+	/usr/bin/osascript \
+		-e 'on run(argv)'\
+		-e 'return display notification item 1 of argv with title "OctoPrint" sound name "default"'\
+		-e 'end'\
+		-- "$OCTO_MSG_STATUS"
+
+# UNIX System other than macOS
+elif [ -x ${DIALOG} ]; then
+	${DIALOG} --title="OctoPrint" --notification --text="$OCTO_MSG_STATUS"	
+fi
