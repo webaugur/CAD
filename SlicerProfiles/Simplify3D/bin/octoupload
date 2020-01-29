@@ -3,7 +3,7 @@
 # YOUR SERVER SETTINGS
 APIKEY=XXXXXXXXXXXXXXXXXXXXXXXX # Octoprint API Key
 SERVER=127.0.0.1 # Octoprint Hostname/IP
-FOLDER=Simplify3D # Octoprint Upload Folder
+FOLDER=OctoUpload # Octoprint Upload Folder
 
 # UNIX stuff
 FILENAME="${1}"
