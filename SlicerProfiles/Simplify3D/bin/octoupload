@@ -4,6 +4,15 @@
 APIKEY=XXXXXXXXXXXXXXXXXXXXXXXX # Octoprint API Key
 SERVER=127.0.0.1 # Octoprint Hostname/IP
 FOLDER=Simplify3D # Octoprint Upload Folder
+CONF=false
+
+# Put your secrets into your home directory
+if [ -e ~/.octoupload.conf ]; then
+	CONF=true
+	. ~/.octoupload.conf
+else
+	echo "Please define APIKEY, SERVER, FOLDER in ~/.octoupload.conf"	
+fi
 
 # UNIX stuff
 FILENAME="${1}"
