@@ -20,7 +20,7 @@ if [ -e ~/.octoupload.conf ]; then
 fi
 
 # Make sure configuration was loaded
-if [ "${APIKEY} " = " " or "${SERVER} " = " " or "${FOLDER} " = " " ]; then
+if [ "${APIKEY} " = " " -o "${SERVER} " = " " -o "${FOLDER} " = " " ]; then
 	echo "Please define APIKEY, SERVER, FOLDER in ~/.octoupload.conf"
 	exit 2
 fi
@@ -49,16 +49,16 @@ fi
 
 # zenity default location on most UNIX Systems
 # AppleScript on macOS
-if [ ${DIALOG} " = " " and `uname` != "Darwin" ]; then
+if [ "${DIALOG} " != " " -a `uname` != "Darwin" ]; then
 	DIALOG=/usr/bin/zenity
 	#DIALOG=/usr/bin/dialog # Terminal
 	#DIALOG=/usr/bin/gdialog # X Window
-fi
 
-# Make sure curl is executable and installed
-if [ ! -x "${DIALOG}" ]; then
-	echo "${DIALOG} is not executable. Ensure dialog is installed or set DIALOG in ~/.octoupload.conf"
-	exit 5
+	# Make sure dialog is executable and installed
+	if [ ! -x "${DIALOG}" ]; then
+        	echo "${DIALOG} is not executable. Ensure dialog is installed or set DIALOG in ~/.octoupload.conf"
+        	exit 5
+	fi
 fi
 
 # Upload to Octoprint
@@ -90,3 +90,5 @@ elif [ -x ${DIALOG} ]; then
 	${DIALOG} --title="OctoPrint" --notification --text="$OCTO_MSG_STATUS"	
 	exit 0
 fi
+
+
