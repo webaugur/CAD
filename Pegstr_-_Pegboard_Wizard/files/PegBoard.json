@@ -1,0 +1,46 @@
+{
+    "parameterSets": {
+        "design default values": {
+            "board_thickness": "5",
+            "closed_bottom": "0",
+            "corner_radius": "30",
+            "epsilon": "0.1",
+            "fn": "32",
+            "holder_angle": "0",
+            "holder_cutout_side": "0",
+            "holder_height": "15",
+            "holder_offset": "0",
+            "holder_x_count": "1",
+            "holder_x_size": "10",
+            "holder_y_count": "2",
+            "holder_y_size": "10",
+            "hole_size": "6.0035",
+            "hole_spacing": "25.4",
+            "strength_factor": "0.66",
+            "taper_ratio": "1",
+            "wall_thickness": "1.85"
+        },
+        "Elmers Glue Disappearing Purple 40g": {
+            "board_thickness": "5",
+            "closed_bottom": "1",
+            "corner_radius": "31",
+            "epsilon": "0.1",
+            "fn": "32",
+            "holder_angle": "0",
+            "holder_cutout_side": "0",
+            "holder_height": "31",
+            "holder_offset": "0",
+            "holder_x_count": "1",
+            "holder_x_size": "31",
+            "holder_y_count": "1",
+            "holder_y_size": "31",
+            "hole_size": "6.0035",
+            "hole_spacing": "25.4",
+            "strength_factor": "0.66",
+            "taper_ratio": "1",
+            "wall_thickness": "1.85"
+        }
+    },
+    "parameterSets": "",
+    "fileFormatVersion": "1"
+}
