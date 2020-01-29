@@ -1,0 +1,5 @@
+
+Simplify3D Process Settings under Scripts tab. 
+At the bottom is a textarea to write code to run after generating gcode. 
+Place octoupload into your ~/bin folder and mark it executable.
+/path/to/bin/octoupload "[output_filepath]" {STRIP "; postProcessing"}
