@@ -79,7 +79,7 @@ OCTO_STATUS=`echo $JSON | ${JQ} '.done'`
 if [ "$OCTO_STATUS" = "true" ] ; then
 	OCTO_MSG_STATUS="Successfully Uploaded ${OCTO_FILENAME} to ${SERVER}!"
 else
-	OCTO_MSG_STATUS="Failed Uploading ${OCTO_FILENAME}"
+	OCTO_MSG_STATUS="Failed Uploading ${OCTO_FILENAME} to ${SERVER}!"
 fi
 
 # macOS display notification script
