@@ -3,12 +3,11 @@
 # YOUR SERVER SETTINGS
 APIKEY=XXXXXXXXXXXXXXXXXXXXXXXX # Octoprint API Key
 SERVER=127.0.0.1 # Octoprint Hostname/IP
-FOLDER=OctoUpload # Octoprint Upload Folder
 
 # UNIX stuff
 FILENAME="${1}"
 
-# Tedious config file parser
+# 1. Usage: You must specify a gcode file to upload 
 if [ "${FILENAME}" = "" ]; then
 	echo "Usage: octoupload file.gcode"
 	exit 1
@@ -19,13 +18,13 @@ if [ -e ~/.octoupload.conf ]; then
 	. ~/.octoupload.conf
 fi
 
-# Make sure configuration was loaded
-if [ "${APIKEY} " = " " -o "${SERVER} " = " " -o "${FOLDER} " = " " ]; then
-	echo "Please define APIKEY, SERVER, FOLDER in ~/.octoupload.conf"
+# 2. Config: Make sure APIKEY and SERVER were set or we can't do anything
+if [ "${APIKEY} " = "XXXXXXXXXXXXXXXXXXXXXXXX " -o "${SERVER} " = "127.0.0.1 " -o "${FOLDER} " = " " ]; then
+	echo "Please define APIKEY, SERVER in ~/.octoupload.conf"
 	exit 2
 fi
 
-# jq default location on most UNIX Systems
+# 3. JQ: default location on most UNIX Systems
 if [ "${JQ} " = " " ]; then
 	JQ=/usr/bin/jq
 fi
@@ -36,7 +35,7 @@ if [ ! -x "${JQ}" ]; then
 	exit 3
 fi
 
-# curl default location on most UNIX Systems
+# 4. cURL: default location on most UNIX Systems
 if [ "${CURL} " = " " ]; then
 	CURL=/usr/bin/curl
 fi
@@ -47,7 +46,7 @@ if [ ! -x "${CURL}" ]; then
 	exit 4
 fi
 
-# zenity default location on most UNIX Systems
+# 5. Dialog: zenity default location on most UNIX Systems
 # AppleScript on macOS
 if [ "${DIALOG} " != " " -a `uname` != "Darwin" ]; then
 	DIALOG=/usr/bin/zenity
@@ -59,6 +58,12 @@ if [ "${DIALOG} " != " " -a `uname` != "Darwin" ]; then
         	echo "${DIALOG} is not executable. Ensure dialog is installed or set DIALOG in ~/.octoupload.conf"
         	exit 5
 	fi
+fi
+
+# 6. Folder: Lets all agree not to use the root folder
+if [ "${FOLDER} " = " " ]; then
+	echo "Please define FOLDER in ~/.octoupload.conf"
+	exit 6
 fi
 
 # Upload to Octoprint
