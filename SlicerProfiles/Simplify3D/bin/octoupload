@@ -19,7 +19,7 @@ if [ -e ~/.octoupload.conf ]; then
 fi
 
 # 2. Config: Make sure APIKEY and SERVER were set or we can't do anything
-if [ "${APIKEY} " = "XXXXXXXXXXXXXXXXXXXXXXXX " -o "${SERVER} " = "127.0.0.1 " -o "${FOLDER} " = " " ]; then
+if [ "${APIKEY} " = "XXXXXXXXXXXXXXXXXXXXXXXX " -o "${SERVER} " = "127.0.0.1 " ]; then
 	echo "Please define APIKEY, SERVER in ~/.octoupload.conf"
 	exit 2
 fi
