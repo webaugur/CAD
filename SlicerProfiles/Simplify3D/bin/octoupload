@@ -6,6 +6,17 @@ SERVER=127.0.0.1 # Octoprint Hostname/IP
 FOLDER=Simplify3D # Octoprint Upload Folder
 CONF=false
 
+# UNIX stuff
+FILENAME="${1}"
+DIALOG=/usr/bin/zenity
+#DIALOG=/usr/bin/dialog # Terminal
+#DIALOG=/usr/bin/gdialog # X Window
+
+if [ "${FILENAME}" = "" ]; then
+	echo "Usage: octoupload file.gcode"
+	exit
+fi
+
 # Put your secrets into your home directory
 if [ -e ~/.octoupload.conf ]; then
 	CONF=true
@@ -14,11 +25,6 @@ else
 	echo "Please define APIKEY, SERVER, FOLDER in ~/.octoupload.conf"	
 fi
 
-# UNIX stuff
-FILENAME="${1}"
-DIALOG=/usr/bin/zenity
-#DIALOG=/usr/bin/dialog # Terminal
-#DIALOG=/usr/bin/gdialog # X Window
 
 # Where in the world is jq?
 # Some adjustments may be required for Linux/UNIX
