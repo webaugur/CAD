@@ -48,7 +48,8 @@ if [ ! -x "${CURL}" ]; then
 fi
 
 # zenity default location on most UNIX Systems
-if [ "${DIALOG} " = " " ]; then
+# AppleScript on macOS
+if [ ${DIALOG} " = " " and `uname` != "Darwin" ]; then
 	DIALOG=/usr/bin/zenity
 	#DIALOG=/usr/bin/dialog # Terminal
 	#DIALOG=/usr/bin/gdialog # X Window
@@ -83,8 +84,9 @@ if [ -x /usr/bin/osascript ]; then
 		-e 'return display notification item 1 of argv with title "OctoPrint" sound name "default"'\
 		-e 'end'\
 		-- "$OCTO_MSG_STATUS"
-
+	exit 0
 # UNIX System other than macOS
 elif [ -x ${DIALOG} ]; then
 	${DIALOG} --title="OctoPrint" --notification --text="$OCTO_MSG_STATUS"	
+	exit 0
 fi
