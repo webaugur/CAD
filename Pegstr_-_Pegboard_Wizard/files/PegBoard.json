@@ -39,6 +39,26 @@
             "strength_factor": "0.66",
             "taper_ratio": "1",
             "wall_thickness": "1.85"
+        },
+        "2 Sharpies": {
+            "board_thickness": "5",
+            "closed_bottom": "1",
+            "corner_radius": "15",
+            "epsilon": "0.1",
+            "fn": "32",
+            "holder_angle": "0",
+            "holder_cutout_side": "0",
+            "holder_height": "40",
+            "holder_offset": "0",
+            "holder_x_count": "2",
+            "holder_x_size": "12",
+            "holder_y_count": "1",
+            "holder_y_size": "12",
+            "hole_size": "6.0035",
+            "hole_spacing": "25.4",
+            "strength_factor": "0.66",
+            "taper_ratio": "1",
+            "wall_thickness": "1.85"
         }
     },
     "parameterSets": "",
