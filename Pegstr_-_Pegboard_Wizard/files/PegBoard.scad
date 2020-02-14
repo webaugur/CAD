@@ -47,7 +47,7 @@ strength_factor = 0.66;
 closed_bottom = 0.0;
 
 // what percentage cu cut in the front (example to slip in a cable or make the tool snap from the side)
-holder_cutout_side = 0.0;
+holder_cutout_side = 0.3;
 
 // set an angle for the holder to prevent object from sliding or to view it better from the top
 holder_angle = 0.0;
