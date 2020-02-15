@@ -35,7 +35,7 @@ holder_y_count = 2; // 1
 corner_radius = 30; // 0.01
 
 // Use values less than 1.0 to make the bottom of the holder narrow
-taper_ratio = 1.0; // 0.1
+taper_ratio = 1.0; // 0.01
 
 
 /* [Advanced] */
