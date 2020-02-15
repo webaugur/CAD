@@ -8,6 +8,9 @@
 // November 28th 2014
 //		- bug fixes
 
+// February 15, 2020, David L Norris (dave@webaugur.com)
+//      - updates for newer versions of customizer
+
 // preview[view:north, tilt:bottom diagonal]
 
 // width of the orifice
