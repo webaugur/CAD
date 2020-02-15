@@ -11,58 +11,62 @@
 // preview[view:north, tilt:bottom diagonal]
 
 // width of the orifice
-holder_x_size = 10;
+holder_x_size = 10; // 1
 
 // depth of the orifice
-holder_y_size = 10;
+holder_y_size = 10; // 1
 
 // hight of the holder
-holder_height = 15;
+holder_height = 15; // 1
 
 // how thick are the walls. Hint: 6*extrusion width produces the best results.
-wall_thickness = 1.85;
+wall_thickness = 1.85; // 0.01
 
 // how many times to repeat the holder on X axis
-holder_x_count = 1;
+holder_x_count = 1; // 1
 
 // how many times to repeat the holder on Y axis
-holder_y_count = 2;
+holder_y_count = 2; // 1
 
 // orifice corner radius (roundness). Needs to be less than min(x,y)/2.
-corner_radius = 30;
+corner_radius = 30; // 1
 
 // Use values less than 1.0 to make the bottom of the holder narrow
-taper_ratio = 1.0;
+taper_ratio = 1.0; // 0.1
 
 
 /* [Advanced] */
 
 // offset from the peg board, typically 0 unless you have an object that needs clearance
-holder_offset = 0.0;
+holder_offset = 0.0; // 0.1
 
 // what ratio of the holders bottom is reinforced to the plate [0.0-1.0]
-strength_factor = 0.66;
+strength_factor = 0.66; // 0.01
 
 // for bins: what ratio of wall thickness to use for closing the bottom
-closed_bottom = 0.0;
+closed_bottom = 0.0; // 0.1
 
 // what percentage cu cut in the front (example to slip in a cable or make the tool snap from the side)
-holder_cutout_side = 0.3;
+holder_cutout_side = 0.3; // 0.1
 
 // set an angle for the holder to prevent object from sliding or to view it better from the top
-holder_angle = 0.0;
+holder_angle = 0.0; // 0.1
 
+/* [Board Dimensions] */
+
+// dimensions the same outside US? [0.00-55.00]
+hole_spacing = 25.40; // 0.05
+
+// hole size [0.0-9.0000]
+hole_size = 6.0035; // 0.0005
+
+// board thickness [2.54-10.00]
+board_thickness = 5.00; // 0.05
 
 /* [Hidden] */
 
 // what is the $fn parameter
 holder_sides = max(50, min(20, holder_x_size*2));
-
-// dimensions the same outside US?
-hole_spacing = 25.4;
-hole_size = 6.0035;
-board_thickness = 5;
-
 
 holder_total_x = wall_thickness + holder_x_count*(wall_thickness+holder_x_size);
 holder_total_y = wall_thickness + holder_y_count*(wall_thickness+holder_y_size);
